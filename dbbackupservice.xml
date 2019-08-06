@@ -3,5 +3,5 @@
     <name>DbBackupService</name>
     <description>This service runs mysql database backup service.</description>
     <executable>java</executable>
-    <arguments>-jar ".\dbBackup-0.0.1-SNAPSHOT.jar"</arguments>
+    <arguments>-jar "E:\java\practice\dbBackup\target\dbBackup-0.0.1-SNAPSHOT.jar"</arguments>
 </service>	

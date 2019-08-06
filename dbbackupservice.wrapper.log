@@ -1,0 +1,59 @@
+2019-08-06 07:24:27,789 DEBUG - Starting ServiceWrapper in the CLI mode
+2019-08-06 07:24:41,679 ERROR - Failed to log event in Windows Event Log: Starting java -jar ".\dbBackup-0.0.1-SNAPSHOT.jar"; Reason: 
+System.Security.SecurityException: The source was not found, but some or all event logs could not be searched.  Inaccessible logs: Security, State.
+   at System.Diagnostics.EventLog.FindSourceRegistration(String source, String machineName, Boolean readOnly)
+   at System.Diagnostics.EventLog.SourceExists(String source, String machineName)
+   at System.Diagnostics.EventLog.VerifyAndCreateSource(String sourceName, String currentMachineName)
+   at System.Diagnostics.EventLog.WriteEntry(String message, EventLogEntryType type, Int32 eventID, Int16 category, Byte[] rawData)
+   at System.Diagnostics.EventLog.WriteEntry(String message)
+   at winsw.WrapperService.LogEvent(String message)
+The Zone of the assembly that failed was:
+MyComputer
+2019-08-06 07:24:41,956 INFO  - Starting java -jar ".\dbBackup-0.0.1-SNAPSHOT.jar"
+2019-08-06 07:24:41,971 ERROR - Failed to log event in Windows Event Log: Starting java -jar ".\dbBackup-0.0.1-SNAPSHOT.jar"; Reason: 
+System.Security.SecurityException: The source was not found, but some or all event logs could not be searched.  Inaccessible logs: Security, State.
+   at System.Diagnostics.EventLog.FindSourceRegistration(String source, String machineName, Boolean readOnly)
+   at System.Diagnostics.EventLog.SourceExists(String source, String machineName)
+   at System.Diagnostics.EventLog.VerifyAndCreateSource(String sourceName, String currentMachineName)
+   at System.Diagnostics.EventLog.WriteEntry(String message, EventLogEntryType type, Int32 eventID, Int16 category, Byte[] rawData)
+   at System.Diagnostics.EventLog.WriteEntry(String message)
+   at winsw.WrapperService.LogEvent(String message)
+The Zone of the assembly that failed was:
+MyComputer
+2019-08-06 07:24:41,982 INFO  - Starting java -jar ".\dbBackup-0.0.1-SNAPSHOT.jar"
+2019-08-06 07:24:42,255 INFO  - Started process 10584
+2019-08-06 07:24:42,637 DEBUG - Forwarding logs of the process System.Diagnostics.Process (java) to winsw.DefaultLogAppender
+2019-08-06 07:24:43,707 ERROR - Failed to log event in Windows Event Log. Reason: 
+System.Security.SecurityException: The source was not found, but some or all event logs could not be searched.  Inaccessible logs: Security, State.
+   at System.Diagnostics.EventLog.FindSourceRegistration(String source, String machineName, Boolean readOnly)
+   at System.Diagnostics.EventLog.SourceExists(String source, String machineName)
+   at System.Diagnostics.EventLog.VerifyAndCreateSource(String sourceName, String currentMachineName)
+   at System.Diagnostics.EventLog.WriteEntry(String message, EventLogEntryType type, Int32 eventID, Int16 category, Byte[] rawData)
+   at System.Diagnostics.EventLog.WriteEntry(String message, EventLogEntryType type)
+   at winsw.WrapperService.LogEvent(String message, EventLogEntryType type)
+The Zone of the assembly that failed was:
+MyComputer
+2019-08-06 07:25:23,414 DEBUG - Starting ServiceWrapper in the CLI mode
+2019-08-06 07:25:24,067 INFO  - Installing the service with id 'DbBackupService'
+2019-08-06 07:25:24,222 FATAL - WMI Operation failure: AccessDenied
+WMI.WmiException: AccessDenied
+   at WMI.WmiRoot.BaseHandler.CheckError(ManagementBaseObject result)
+   at WMI.WmiRoot.ClassHandler.Invoke(Object proxy, MethodInfo method, Object[] args)
+   at WMI.Win32ServicesProxy.Create(String , String , String , ServiceType , ErrorControl , StartMode , Boolean , String , String , String[] )
+   at winsw.WrapperService.Run(String[] _args, ServiceDescriptor descriptor)
+   at winsw.WrapperService.Main(String[] args)
+2019-08-06 07:26:37,946 DEBUG - Starting ServiceWrapper in the CLI mode
+2019-08-06 07:26:38,652 INFO  - Installing the service with id 'DbBackupService'
+2019-08-06 07:26:38,753 DEBUG - Completed. Exit code is 0
+2019-08-06 07:26:46,963 DEBUG - Starting ServiceWrapper in the CLI mode
+2019-08-06 07:26:47,793 INFO  - Starting java -jar "E:\java\practice\dbBackup\target\dbBackup-0.0.1-SNAPSHOT.jar"
+2019-08-06 07:26:47,813 INFO  - Starting java -jar "E:\java\practice\dbBackup\target\dbBackup-0.0.1-SNAPSHOT.jar"
+2019-08-06 07:26:47,860 INFO  - Started process 3232
+2019-08-06 07:26:47,876 DEBUG - Forwarding logs of the process System.Diagnostics.Process (java) to winsw.DefaultLogAppender
+2019-08-06 07:26:48,899 INFO  - Stopping DbBackupService
+2019-08-06 07:26:48,906 DEBUG - ProcessKill 3232
+2019-08-06 07:26:49,368 INFO  - Stopping process 3232
+2019-08-06 07:26:49,408 INFO  - Send SIGINT 3232
+2019-08-06 07:26:49,421 WARN  - SIGINT to 3232 failed - Killing as fallback
+2019-08-06 07:26:49,439 INFO  - Finished DbBackupService
+2019-08-06 07:26:49,450 DEBUG - Completed. Exit code is 0
