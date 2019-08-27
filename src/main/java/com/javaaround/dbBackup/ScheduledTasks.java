@@ -20,12 +20,10 @@ public class ScheduledTasks {
     @Scheduled(fixedRate = 5000)
     public void reportCurrentTime() {
         try {
-            String dbName = "blog";
-            String dbUser = "root";
-            String dbPass = "12345";
+            /*
             boolean isWindows = System.getProperty("os.name")
                     .toLowerCase().startsWith("windows");
-            System.out.println(isWindows);
+            System.out.println(isWindows);*/
 
 //            File backupFile = new File("E:/java/practice/backup//blog_"+ LocalDateTime.now()+".sql");
 
@@ -39,7 +37,7 @@ public class ScheduledTasks {
                 System.out.println("File already exists.");
             }*/
             //if(backupFile.createNewFile()){
-            Process runtimeProcess = Runtime.getRuntime().exec("C:/Program Files/MySQL/MySQL Server 5.7/bin/mysqldump.exe -uroot -p12345 -B blog -r " + "e:/java/practice/backup/blog.sql");
+            Process runtimeProcess = Runtime.getRuntime().exec(applicationProperties.getBackupClientInfo().getToolLocation() + "/mysqldump -u" + applicationProperties.getDatabaseUserName() + " -h" + applicationProperties.getDatabaseIp() + " -p" + applicationProperties.getDatabaseUserPassword() + " -B " + applicationProperties.getDatabaseName() + " -r " + applicationProperties.getBackupClientInfo().getBackupLocation());
             int processComplete = runtimeProcess.waitFor();
 
             /*NOTE: processComplete=0 if correctly executed, will contain other values if not*/
