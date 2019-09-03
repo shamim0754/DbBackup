@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
+import java.io.*;
 
 @Component
 public class ScheduledTasks {
@@ -25,17 +25,21 @@ public class ScheduledTasks {
                     .toLowerCase().startsWith("windows");
             System.out.println(isWindows);*/
 
-//            File backupFile = new File("E:/java/practice/backup//blog_"+ LocalDateTime.now()+".sql");
+           File backupFile = new File("E:/java/practice/backup/blog_" + LocalDateTime.now().toString()
+                   .replace("T", "")
+                   .replaceAll(":", "-")
+                   .split("\\.")[0]
+                   + ".sql");
 
-            /*File file = new File("e://java//practice//backup//blog_"+now.format(dateTimeFormatter)+".sql");
+            /*File file = new File("e://java//practice//backup//blog_"+now.format(dateTimeFormatter)+".sql");*/
 
-//Create the file
-            if (file.createNewFile())
+           //Create the file
+            if (backupFile.createNewFile())
             {
                 System.out.println("File is created!");
             } else {
                 System.out.println("File already exists.");
-            }*/
+            }
             //if(backupFile.createNewFile()){
             Process runtimeProcess = Runtime.getRuntime().exec(applicationProperties.getBackupClientInfo().getToolLocation() + "/mysqldump -u" + applicationProperties.getDatabaseUserName() + " -h" + applicationProperties.getDatabaseIp() + " -p" + applicationProperties.getDatabaseUserPassword() + " -B " + applicationProperties.getDatabaseName() + " -r " + applicationProperties.getBackupClientInfo().getBackupLocation());
             int processComplete = runtimeProcess.waitFor();
