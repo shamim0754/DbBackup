@@ -24,13 +24,11 @@ public class ScheduledTasks {
     public void reportCurrentTime() {
         applicationProperties.getDatabases().forEach(databaseName -> {
             try {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd h:m a");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_h_m_s_a");
                 String todaysDateString = LocalDateTime.now().format(formatter).toString();
 
                 File backupFile = new File(applicationProperties.getBackupClientInfo().getBackupLocation() + "/" + databaseName + "_" +
                         todaysDateString
-                                .replace(" ", "_")
-                                .replace(":", "_")
                         + ".sql");
 
                 /*File file = new File("e://java//practice//backup//blog_"+now.format(dateTimeFormatter)+".sql");*/
