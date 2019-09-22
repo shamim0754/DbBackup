@@ -2,6 +2,11 @@
 	<id>DbBackupService</id> <!-- must be unique -->
     <name>DbBackupService</name>
     <description>This service runs mysql database backup service.</description>
+    <startmode>Automatic</startmode>
+    <logpath>%BASE%\log</logpath>
+    <log mode="roll-by-time">
+        <pattern>yyyyMMdd</pattern>
+    </log>
     <executable>java</executable>
-    <arguments>-jar "E:\java\practice\dbBackup\target\dbBackup-0.0.1-SNAPSHOT.jar"</arguments>
+    <arguments>-jar "%BASE%\target\dbBackup-0.0.1-SNAPSHOT.jar"</arguments>
 </service>	
