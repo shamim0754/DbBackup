@@ -16,5 +16,7 @@ public class ApplicationProperties {
     private String databaseUserName;
     private String databaseUserPassword;
     private BackupClientInfo backupClientInfo;
+    private String cloudStorage;
+    private String cloudStorageKey;
 
 }
