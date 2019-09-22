@@ -59,8 +59,6 @@ public class ScheduledTasks {
                         todaysDateString
                         + ".sql");
 
-                /*File file = new File("e://java//practice//backup//blog_"+now.format(dateTimeFormatter)+".sql");*/
-
                 //Create the file
                 if (backupFile.createNewFile()) {
                     System.out.println("File is created!");
@@ -81,16 +79,8 @@ public class ScheduledTasks {
 
 
                 if(nonNull(applicationProperties.getCloudStorage()) && !applicationProperties.getCloudStorage().isEmpty()){
-                    DbxRequestConfig config = DbxRequestConfig.newBuilder("dropbox/java-tutorial").build();
-                    DbxClientV2 client = new DbxClientV2(config, applicationProperties.getCloudStorageKey());
-                    try (InputStream in = new FileInputStream(backupFile)) {
-                        try {
-                            FileMetadata metadata = client.files().uploadBuilder("/" + backupFile.getName())
-                                    .uploadAndFinish(in);
-                        } catch (DbxException e) {
-                            e.printStackTrace();
-                        }
-                    }
+                    CloudStorage cloudStorage = new DropBoxCloudStorage();
+                    cloudStorage.upload(applicationProperties.getCloudStorageKey(), backupFile);
                 }
 
             } catch (IOException e) {
