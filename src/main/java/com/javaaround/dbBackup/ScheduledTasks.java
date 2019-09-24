@@ -79,7 +79,11 @@ public class ScheduledTasks {
 
 
                 if(nonNull(applicationProperties.getCloudStorage()) && !applicationProperties.getCloudStorage().isEmpty()){
-                    CloudStorage cloudStorage = new DropBoxCloudStorage();
+                    CloudStorage cloudStorage = null;
+                    if(applicationProperties.getCloudStorage().equals("dropbox"))
+                        cloudStorage   = new DropBoxCloudStorage();
+                    else if(applicationProperties.getCloudStorage().equals("googledrive"))
+                        cloudStorage   = new GoogleDriveCloudStorage();
                     cloudStorage.upload(applicationProperties.getCloudStorageKey(), backupFile);
                 }
 

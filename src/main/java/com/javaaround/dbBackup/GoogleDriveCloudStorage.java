@@ -45,7 +45,7 @@ public class GoogleDriveCloudStorage implements  CloudStorage {
             com.google.api.services.drive.model.File fileMetadata = new com.google.api.services.drive.model.File();
             fileMetadata.setName(backupFile.getName());
             FileContent mediaContent = new FileContent("text/plain", backupFile);
-            File file = service.files().create(fileMetadata,mediaContent)
+            com.google.api.services.drive.model.File file = service.files().create(fileMetadata,mediaContent)
                     .setFields("id")
                     .execute();
         } catch (GeneralSecurityException e) {
@@ -63,8 +63,8 @@ public class GoogleDriveCloudStorage implements  CloudStorage {
      */
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT, String key) throws IOException {
         // Load client secrets.
-        //InputStream in = GoogleDriveCloudStorage.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
-        InputStream in = new ByteArrayInputStream(key.getBytes());
+        InputStream in = GoogleDriveCloudStorage.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
+       // InputStream in = new ByteArrayInputStream("{\"tokens\" : \"AIzaSyDm_9X4DhnPAdGX-xxA2_39tpD9eTvd2wU\"}".getBytes());
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
         }
