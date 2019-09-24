@@ -7,8 +7,8 @@ Db backup service automatically for mysql
 ### How to use ###
       1. Install jdk >=8  
       2. Change setting at src/main/resources/appliation.properties
-      ```javascript
       
+      ```javascript
       cron.expression=0 0 11,19 * * *
       how.many.days.backup.you.need = 30
       #server than you want backup
