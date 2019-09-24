@@ -7,7 +7,7 @@ Db backup service automatically for mysql
 ### How to use ###
       1. Install jdk >=8  
       2. Change setting at src/main/resources/appliation.properties
-      ```java
+      ```txt
       cron.expression=0 0 11,19 * * *
       how.many.days.backup.you.need = 30
       #server than you want backup
@@ -20,8 +20,8 @@ Db backup service automatically for mysql
       backup.database.backupClientInfo.toolLocation=C:/Program Files/MySQL/MySQL Server 5.7/bin
       backup.database.backupClientInfo.backupLocation=e:/java/practice/backup
       backup.database.cloudStorage=dropbox
-      backup.database.cloudStorageKey=-x-oDFB8Uz8AAAAAAAAFA3Ri-mxC_phSga-ZxxcwyKMhGmlxoxPghCSHV-xhZxl5
-      #backup.database.cloudStorageKey=AIzaSyDm_9X4DhnPAdGX-xxA2_39tpD9eTvd2wU
+      backup.database.cloudStorageKey=
+      #backup.database.cloudStorageKey=
       ```
       3. ./mvnw clean package
       4. Run as service
