@@ -36,6 +36,8 @@ Db backup service automatically for mysql
             [Detail!](https://github.com/kohsuke/winsw)
         
         For Linux
-        Copy db-backup-app.service.service to /etc/systemd/system/
+        update location jar location 
+        at db-backup-app.service.service <br /> 
+        and then copy to /etc/systemd/system/<br /> 
         systemctl enable db-backup-app.service
           
