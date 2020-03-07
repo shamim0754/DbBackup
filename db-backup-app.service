@@ -1,0 +1,12 @@
+[Unit]
+Description=This is mysql db backup service
+After=syslog.target
+
+[Service]
+User=root
+ExecStart=/shamim/practice/DbBackup/target/dbBackup-0.0.1-SNAPSHOT.jar
+SuccessExitStatus=143
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
