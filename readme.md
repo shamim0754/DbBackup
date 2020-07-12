@@ -6,6 +6,7 @@ Db backup service automatically for mysql
  
 ### How to use ###
   1. Install jdk >=8  
+  
   2. Change setting at src/main/resources/appliation.properties
   
   ```java
@@ -25,9 +26,9 @@ Db backup service automatically for mysql
   #backup.database.cloudStorageKey=
   ```
   3. ./mvnw clean package
-  4. Run as service
+  4. Run as service <br />
     1. For windows. 
-    Exectue following command at root dir
+    Execute following command at root dir
         1.dbbackupservice.exe install
         then dbbackupservice.exe start or reboot your pc 
        
@@ -35,7 +36,6 @@ Db backup service automatically for mysql
         dbbackupservice.exe status
         
         [Detail!](https://github.com/kohsuke/winsw)
-    
     2. For Linux,
     update location jar location at db-backup-app.service.service <br /> 
     and then copy to /etc/systemd/system/<br /> 
