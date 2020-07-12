@@ -23,21 +23,21 @@ Db backup service automatically for mysql
   backup.database.backupClientInfo.backupLocation=e:/java/practice/backup
   backup.database.cloudStorage=dropbox
   backup.database.cloudStorageKey=
-  #backup.database.cloudStorageKey=
   ```
   3. ./mvnw clean package
   4. Run as service <br />
     1. For windows. 
-    Execute following command at root dir
-        1.dbbackupservice.exe install
-        then dbbackupservice.exe start or reboot your pc 
+    Execute following command at root dir <br />
+        1. `dbbackupservice.exe install`
+        2. `dbbackupservice.exe start` 
        
         To verify
-        dbbackupservice.exe status
+        `dbbackupservice.exe status`
         
-        [Detail!](https://github.com/kohsuke/winsw)
+        [Detail!](https://github.com/kohsuke/winsw)<br />
     2. For Linux,
-    update location jar location at db-backup-app.service.service <br /> 
-    and then copy to /etc/systemd/system/<br /> 
-    systemctl enable db-backup-app.service
+        1. update location jar location at db-backup-app.service.service <br /> 
+        2. Copy db-backup-app.service.service to /etc/systemd/system/<br /> 
+        3. systemctl enable db-backup-app.service
+        4. systemctl enable db-backup-app.service
           

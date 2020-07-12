@@ -53,7 +53,7 @@ public class ScheduledTasks {
         applicationProperties.getDatabases().forEach(databaseName -> {
             try {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_h_m_s_a");
-                String todaysDateString = LocalDateTime.now().format(formatter).toString();
+                String todaysDateString = LocalDateTime.now().format(formatter);
 
                 File backupFile = new File(applicationProperties.getBackupClientInfo().getBackupLocation() + "/" + databaseName + "_" +
                         todaysDateString
