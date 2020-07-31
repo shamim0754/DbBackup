@@ -26,7 +26,7 @@ Db backup service automatically for mysql
   ```
   3. ./mvnw clean package
   4. Run as service <br />
-    1. For windows. 
+    1. For windows. <br />
     Execute following command at root dir <br />
         1. `dbbackupservice.exe install`
         2. `dbbackupservice.exe start` 
@@ -36,8 +36,9 @@ Db backup service automatically for mysql
         
         [Detail!](https://github.com/kohsuke/winsw)<br />
     2. For Linux,
-        1. update location jar location at db-backup-app.service.service <br /> 
+        1. Update app jar location at `db-backup-app.service.service` <br /> 
         2. Copy db-backup-app.service.service to /etc/systemd/system/<br /> 
+        cp db-backup-app.service.service /etc/systemd/system/<br /> 
         3. systemctl enable db-backup-app.service
-        4. systemctl enable db-backup-app.service
+        4. systemctl start db-backup-app.service
           
