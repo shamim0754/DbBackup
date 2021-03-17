@@ -42,8 +42,8 @@ public class ScheduledTasks {
     @Value("${how.many.days.backup.you.need}")
     private Integer dayBackupNeed;
 
-   // @Scheduled(cron = "${cron.expression}")
-    @Scheduled(fixedRate = 15000)
+    @Scheduled(cron = "${cron.expression}")
+    //@Scheduled(fixedRate = 15000)
     public void reportCurrentTime() {
         applicationProperties.getDatabases().forEach(databaseName -> {
             try {

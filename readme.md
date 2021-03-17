@@ -7,7 +7,7 @@ Db backup service automatically for mysql
 ### How to use ###
   1. Install jdk >=8  
   
-  2. Change setting at src/main/resources/appliation.properties
+  2. Change setting at src/main/resources/application.properties
   
   ```java
   cron.expression=0 0 11,19 * * *
@@ -36,8 +36,8 @@ Db backup service automatically for mysql
         
         [Detail!](https://github.com/kohsuke/winsw)<br />
     2. For Linux,
-        1. Update app jar location at `db-backup-app.service.service` <br /> 
-        2. Copy db-backup-app.service.service to /etc/systemd/system/<br /> 
+        1. Update app jar location at `db-backup-app.service` <br /> 
+        2. Copy db-backup-app.service to /etc/systemd/system/<br /> 
         cp db-backup-app.service.service /etc/systemd/system/<br /> 
         3. systemctl enable db-backup-app.service
         4. systemctl start db-backup-app.service
