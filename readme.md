@@ -2,7 +2,7 @@ Db backup service automatically for mysql
 ### Feature ###
 1. Support how many days backup need
 2. Support cloud storage eg.dropbox,google drive
-3. Support FTP
+3. Support SFTP
  
 ### How to use ###
   1. Install jdk >=8  
@@ -24,6 +24,14 @@ Db backup service automatically for mysql
   backup.database.cloudStorage=dropbox
   backup.database.cloudStorageKey=
   ```
+  Note for use SFTP  use following confiquration
+
+  ```
+ftp.host.url=134.122.32.21
+ftp.host.username=root
+ftp.host.password=54DxeSNhtZzLwgP
+ftp.host.dir=/root/backup
+```
   3. ./mvnw clean package
   4. Run as service <br />
     1. For windows. <br />
@@ -44,5 +52,5 @@ Db backup service automatically for mysql
         4. systemctl start db-backup-app.service
    <br/>
        if any further change on db-backup-app.service
-       then systemctr daemon-reload
+       then systemctl daemon-reload
           

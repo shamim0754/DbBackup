@@ -7,6 +7,9 @@ import com.dropbox.core.v2.files.FileMetadata;
 import com.dropbox.core.v2.files.ListFolderBuilder;
 import com.dropbox.core.v2.files.ListFolderResult;
 import com.dropbox.core.v2.files.Metadata;
+import net.schmizz.sshj.SSHClient;
+import net.schmizz.sshj.sftp.SFTPClient;
+import net.schmizz.sshj.transport.verification.PromiscuousVerifier;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.AgeFileFilter;
 import org.slf4j.Logger;
@@ -39,11 +42,14 @@ public class ScheduledTasks {
     @Autowired
     private ApplicationProperties applicationProperties;
 
+    @Autowired
+    private FtpProperties ftpProperties;
+
     @Value("${how.many.days.backup.you.need}")
     private Integer dayBackupNeed;
 
-    @Scheduled(cron = "${cron.expression}")
-    //@Scheduled(fixedRate = 15000)
+    //@Scheduled(cron = "${cron.expression}")
+    @Scheduled(fixedRate = 15000)
     public void reportCurrentTime() {
         applicationProperties.getDatabases().forEach(databaseName -> {
             try {
@@ -91,6 +97,17 @@ public class ScheduledTasks {
                     }
                 }
 
+                log.info("ftp file upload");
+                if(nonNull(ftpProperties.getUrl()) && nonNull(ftpProperties.getPassword()) && nonNull(ftpProperties.getUsername()) && nonNull(ftpProperties.getDir()) ) {
+                    SSHClient sshClient = setupSshj();
+                    SFTPClient sftpClient = sshClient.newSFTPClient();
+
+                    sftpClient.put(backupFile.getAbsolutePath(), ftpProperties.getDir() + "/");
+
+                    sftpClient.close();
+                    sshClient.disconnect();
+                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -105,6 +122,14 @@ public class ScheduledTasks {
         }
 
 
+    }
+
+    private SSHClient setupSshj() throws IOException {
+        SSHClient client = new SSHClient();
+        client.addHostKeyVerifier(new PromiscuousVerifier());
+        client.connect(ftpProperties.getUrl());
+        client.authPassword(ftpProperties.getUsername(), ftpProperties.getPassword());
+        return client;
     }
     private long deleteFilesOlderThanXDays() throws DbxException {
         DbxRequestConfig config = DbxRequestConfig.newBuilder("dropbox/java-tutorial").build();
