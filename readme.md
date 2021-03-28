@@ -29,7 +29,7 @@ Db backup service automatically for mysql
   ```
 ftp.host.url=134.122.32.21
 ftp.host.username=root
-ftp.host.password=54DxeSNhtZzLwgP
+ftp.host.password=54DxeSNhtZzLwgP12
 ftp.host.dir=/root/backup
 ```
   3. ./mvnw clean package
