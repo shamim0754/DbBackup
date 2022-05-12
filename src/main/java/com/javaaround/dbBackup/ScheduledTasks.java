@@ -98,7 +98,7 @@ public class ScheduledTasks {
                     }
                 }
 
-                log.info("ftp file upload");
+                log.info("ftp file upload2");
                 if(nonNull(ftpProperties.getUrl()) && nonNull(ftpProperties.getPassword()) && nonNull(ftpProperties.getUsername()) && nonNull(ftpProperties.getDir()) ) {
                     SSHClient sshClient = setupSshj();
                     SFTPClient sftpClient = sshClient.newSFTPClient();
