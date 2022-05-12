@@ -68,7 +68,8 @@ public class ScheduledTasks {
                     System.out.println("File already exists.");
                 }
                 //if(backupFile.createNewFile()){
-                Process runtimeProcess = Runtime.getRuntime().exec(applicationProperties.getBackupClientInfo().getToolLocation() + "/mysqldump --no-create-db --single-transaction -u" + applicationProperties.getDatabaseUserName() + " -h" + applicationProperties.getDatabaseIp() + " -p" + applicationProperties.getDatabaseUserPassword() + " -B " + databaseName + " -r " + backupFile.getAbsolutePath());
+
+                Process runtimeProcess = Runtime.getRuntime().exec(applicationProperties.getBackupClientInfo().getToolLocation() + "/mysqldump --single-transaction --no-create-db -u" + applicationProperties.getDatabaseUserName() + " -h" + applicationProperties.getDatabaseIp() + " -p" + applicationProperties.getDatabaseUserPassword() + " -B " + databaseName + " -r " + backupFile.getAbsolutePath());
                 int processComplete = runtimeProcess.waitFor();
 
                 /*NOTE: processComplete=0 if correctly executed, will contain other values if not*/
